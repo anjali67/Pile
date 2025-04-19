@@ -27,17 +27,17 @@ export default function LoginScreen({navigation}) {
                return
         }
         const response = await dispatch(loginUser({ email, password })).unwrap();  
-        if (response.success === true) {
+        if (response) {
           setEmail("")
           setPassword("")
           displayMessage({ message:response.message || 'Login successful!'})
           navigation.navigate('BottomTab')
         } else {
           console.log(":response.message",response.message)
-          displayMessage({ message:response.message || 'Login failed',type: "danger"})
+           displayMessage({ message:response.message || 'Login failed',type: "danger"})
         }
       } catch (error) {
-        displayMessage({ message: error,type: "danger"})
+        displayMessage({ message: error?.message || String(error), type: "danger" })
 }}
 
 

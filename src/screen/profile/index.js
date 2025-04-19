@@ -14,7 +14,6 @@ export default function Profile(props) {
     <TouchableOpacity onPress={ async () => {
        await AsyncStorage.removeItem(`favorites`);
        dispatch(logout());
-      //  props.navigation.navigate('LoginScreen')
     }}>
      <LogoutIcon/> 
     </TouchableOpacity>
